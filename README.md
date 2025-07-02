@@ -23,6 +23,6 @@
 เลือก System Image =x86_64 + Google APIs  
 กด Next → ตั้งชื่อ → Finish  
 9. รันโปรเจกต์  
-   npx react-native doctor    เป็นคำสั่งตรวจสอบความพร้อมในการรัน
-   npx react-native start  
-   npx react-native run-android  
+   - `npx react-native doctor` เป็นคำสั่งตรวจสอบความพร้อมในการรัน  
+   - `npx react-native start`  
+   - `npx react-native run-android` 
