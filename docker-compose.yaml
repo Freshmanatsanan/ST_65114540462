@@ -1,14 +1,17 @@
-version: '3'
 services:
   myapp:
-    build: . # ที่อยู่ของ Dockerfile สำหรับ myapp (React Native หรือ Mobile App)
-    container_name: MyApp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: myapp
+    working_dir: /app
     ports:
-      - "8081:8081"  # เปิดพอร์ตที่ React Native server ใช้
+      - "8081:8081"
     volumes:
-      - ./myapp:/usr/src/app
+      - ./:/app
+      - /app/node_modules
     environment:
-      - REACT_NATIVE_PACKAGER_HOSTNAME=localhost  # ตั้งค่าพอร์ตที่แอปจะรันใน container
-
-volumes:
-  db_data:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - REACT_NATIVE_PACKAGER_HOSTNAME=host.docker.internal
+    command: ["npx","metro","serve","--host","0.0.0.0","--port","8081"]
